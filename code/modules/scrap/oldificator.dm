@@ -35,7 +35,7 @@
 	if(prob(75))
 		storage_slots = max(contents.len, max(0, storage_slots - pick(2, 2, 2, 3, 3, 4)))
 	if(prob(75))
-		max_combined_w_class = max_combined_w_class / 2
+		max_storage_space = max_storage_space / 2
 	..()
 
 /obj/item/weapon/reagent_containers/make_old()
@@ -241,12 +241,6 @@
 		for(var/i = 1 to del_count)
 			var/removed_item = pick(product_records)
 			product_records -= removed_item
-
-
-/obj/item/clothing/glasses/sunglasses/sechud/make_old()
-	..()
-	if(hud && prob(75))
-		hud = new /obj/item/clothing/glasses/hud/broken
 
 /obj/effect/decal/mecha_wreckage/make_old()
 	salvage_num = 8

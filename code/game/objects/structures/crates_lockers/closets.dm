@@ -211,6 +211,7 @@
 			return
 		usr.drop_item()
 		if(W)
+			W.do_putdown_animation(src)
 			W.forceMove(src.loc)
 
 	else if(istype(W, /obj/item/weapon/packageWrap) || istype(W, /obj/item/weapon/extraction_pack))
@@ -280,9 +281,7 @@
 
 // tk grab then use on self
 /obj/structure/closet/attack_self_tk(mob/user)
-	src.add_fingerprint(user)
-	if(!src.toggle())
-		to_chat(usr, "<span class='notice'>It won't budge!</span>")
+	toggle()
 
 /obj/structure/closet/verb/verb_toggleopen()
 	set src in oview(1)

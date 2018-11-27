@@ -40,7 +40,7 @@
 		if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech
 			return
 
-		if(over_object == usr && Adjacent(usr)) // this must come before the screen objects only block
+		if(over_object == usr && (Adjacent(M) || (TK in M.mutations))) // this must come before the screen objects only block
 			src.open(usr)
 			return
 
@@ -65,7 +65,7 @@
 				if("mouth")
 					if(!M.unEquip(src))
 						return
-					M.put_in_active_hand(src)
+					M.put_in_hands(src)
 			src.add_fingerprint(usr)
 			return
 	return
@@ -129,7 +129,8 @@
 //This proc return 1 if the item can be picked up and 0 if it can't.
 //Set the stop_messages to stop it from printing messages
 /obj/item/weapon/storage/proc/can_be_inserted(obj/item/W, stop_messages = FALSE)
-	if(!istype(W) || (W.flags & ABSTRACT)) return //Not an item
+	if(!istype(W) || (W.flags & ABSTRACT) || W.anchored)
+		return FALSE//Not an item
 
 	if(loc == W)
 		return FALSE //Means the item is already in the storage item

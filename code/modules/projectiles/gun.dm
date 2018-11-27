@@ -45,7 +45,7 @@
 	return 0
 
 /obj/item/weapon/gun/proc/special_check(mob/M, atom/target) //Placeholder for any special checks, like detective's revolver. or wizards
-	if(M.mind.special_role == "Wizard")
+	if(M.mind && M.mind.special_role == "Wizard")
 		return FALSE
 	return TRUE
 
@@ -223,6 +223,8 @@
 
 	if (can_fire())
 		//Point blank shooting if on harm intent or target we were targeting.
+		if(!special_check(user, target))
+			return
 		if(user.a_intent == "hurt")
 			user.visible_message("<span class='red'><b> \The [user] fires \the [src] point blank at [M]!</b></span>")
 			chambered.BB.damage *= 1.3

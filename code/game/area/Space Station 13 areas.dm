@@ -299,6 +299,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Thunderdome (Observer.)"
 	icon_state = "purple"
 
+/area/thunderfield
+	name = "Thunderfield"
+	icon_state = "thunderfield"
 
 //ENEMY
 
@@ -583,6 +586,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Theater"
 	icon_state = "bar"
 
+/area/crew_quarters/gameroom
+	name = "Gaming room"
+	icon_state = "gameroom"
 
 /area/library
  	name = "Library"
@@ -677,6 +683,12 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/engine/break_room
 	name = "Engineering Break Room"
+
+/area/engine/monitoring
+	name = "Engineering Monitoring Room"
+
+/area/engine/equip
+	name = "Engineering Equipment Storage"
 
 /area/engine/chiefs_office
 	name = "Chief Engineer's office"
@@ -1270,7 +1282,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Listening Post"
 	icon_state = "away"
 	requires_power = 0
-
 
 /area/awaymission/beach
 	name = "Beach"

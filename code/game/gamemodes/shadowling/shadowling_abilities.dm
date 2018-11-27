@@ -233,6 +233,7 @@
 		for(var/mob/M in mob_list)
 			if(is_shadow_or_thrall(M) || isobserver(M))
 				to_chat(M, "<span class='shadowling'><b>\[Hive Chat\]</b><i> [usr.real_name]</i>: [text]</span>")
+				M.telepathy_hear("has heard", text, user)
 		log_say("Shadowling Hivemind: [key_name(usr)] : [text]")
 
 /obj/effect/proc_holder/spell/targeted/thrall_sight
@@ -680,7 +681,7 @@
 		for(var/mob/M in mob_list)
 			if(is_shadow_or_thrall(M) || (M in dead_mob_list))
 				to_chat(M, "<font size=4><span class='shadowling'><b>\[Hive Chat\]<i> [usr.real_name] (ASCENDANT)</i>: [sanitize(text)]</b></font></span>")//Bigger text for ascendants.
-
+				M.telepathy_hear("has heard", text, user)
 
 
 /obj/effect/proc_holder/spell/targeted/shadowlingAscendantTransmit
@@ -694,7 +695,7 @@
 
 /obj/effect/proc_holder/spell/targeted/shadowlingAscendantTransmit/cast(list/targets)
 	for(var/mob/living/user in targets)
-		var/text = sanitize(input(user, "What do you want to say to everything on and near [world.name]?.", "Transmit to World", ""))
+		var/text = sanitize(input(user, "What do you want to say to everything on and near [station_name]?.", "Transmit to World", ""))
 		if(!text)
 			return
 		to_chat(world, "<font size=4><span class='shadowling'><b>\"[sanitize(text)]\"</font></span>")
